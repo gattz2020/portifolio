@@ -109,9 +109,8 @@ function initContactForm() {
     const service = document.getElementById('contact-service')?.value || '';
     const msg = document.getElementById('contact-msg')?.value || '';
 
-    // Número padrão que o usuário pode configurar
-    // Deixamos um formato padrão configurável
-    const telefoneDestino = '5511999999999';
+    // Telefone configurado do desenvolvedor
+    const telefoneDestino = '5562985099185';
 
     const texto = `Olá! Meu nome é ${encodeURIComponent(name)}.
 Contato: ${encodeURIComponent(detail)}

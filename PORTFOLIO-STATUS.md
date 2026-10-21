@@ -78,9 +78,8 @@ Perfil configurado: **https://github.com/gattz2020**
 
 5. **Divulgar no Workana e 99freelas:**
    - Use os templates prontos em [`docs/propostas-freelance.md`](./docs/propostas-freelance.md) que já estão com seus links configurados!
-   - Ativar o **GitHub Pages** (ou Vercel/Netlify) para gerar o link público (ex: `https://seunome.github.io/portifolio/`).
-4. **Disponibilizar os Links no Perfil:**
    - Adicionar o link do portfólio no seu perfil do **Workana** e **99freelas** para começar a enviar propostas.
+   - WhatsApp direto de atendimento configurado: **(62) 98509-9185**.
 
 ---
 *Status salvo com sucesso em 13/10/2026. Descanse bem e até amanhã!*

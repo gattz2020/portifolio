@@ -25,7 +25,8 @@ Copie, adapte os campos entre colchetes `[ ... ]` e envie diretamente nas propos
 > Se quiser alinhar os detalhes ou tiver referências do seu agrado, me mande uma mensagem por aqui para conversarmos!
 >
 > Um abraço,  
-> **[Seu Nome]** — Desenvolvedor Web
+> **[Seu Nome]** — Desenvolvedor Web  
+> 📲 WhatsApp: (62) 98509-9185
 
 ---
 
@@ -49,7 +50,8 @@ Copie, adapte os campos entre colchetes `[ ... ]` e envie diretamente nas propos
 > Minha entrega inclui código limpo, suporte pós-entrega e garantia de funcionamento. Vamos bater um papo rápido para eu entender suas regras de negócio?
 >
 > À disposição,  
-> **[Seu Nome]** — Desenvolvedor Full-Stack
+> **[Seu Nome]** — Desenvolvedor Full-Stack  
+> 📲 WhatsApp: (62) 98509-9185
 
 ---
 
@@ -74,4 +76,5 @@ Copie, adapte os campos entre colchetes `[ ... ]` e envie diretamente nas propos
 > Me diga quais dados você precisa extrair para eu te passar uma estimativa exata de prazo e investimento!
 >
 > Atenciosamente,  
-> **[Seu Nome]** — Especialista em Automação Python
+> **[Seu Nome]** — Especialista em Automação Python  
+> 📲 WhatsApp: (62) 98509-9185
