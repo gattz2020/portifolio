@@ -1,0 +1,6 @@
+# Dependências recomendadas para produção
+# (A aplicação também pode rodar com a biblioteca padrão do Python 3)
+requests>=2.31.0
+beautifulsoup4>=4.12.3
+openpyxl>=3.1.2
+pytest>=8.0.0

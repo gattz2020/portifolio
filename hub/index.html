@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desenvolvedor Full-Stack & Especialista em Automação | Portfólio</title>
+  <meta name="description" content="Desenvolvedor especializado em criação de Landing Pages de alta conversão, Dashboards SaaS e Automações com Python. Disponível para projetos no Workana e 99freelas." />
+  
+  <!-- Google Fonts & Tailwind CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              900: '#1e3a8a',
+            },
+            accent: {
+              emerald: '#10b981',
+              violet: '#8b5cf6',
+              amber: '#f59e0b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom subtle glassmorphism and ambient glow */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(229, 231, 235, 0.8);
+    }
+    .dark .glass-card {
+      background: rgba(17, 24, 39, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(55, 65, 81, 0.6);
+    }
+    .hero-glow {
+      background: radial-gradient(circle at 50% 30%, rgba(59, 130, 246, 0.15), transparent 70%);
+    }
+    .dark .hero-glow {
+      background: radial-gradient(circle at 50% 30%, rgba(59, 130, 246, 0.22), transparent 70%);
+    }
+    .badge-pulse {
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulse-ring 2s infinite cubic-bezier(0.66, 0, 0, 1);
+    }
+    @keyframes pulse-ring {
+      to {
+        box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen antialiased transition-colors duration-200">
+
+  <!-- NAVBAR -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-card transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 font-bold text-lg tracking-tight group">
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-600 to-accent-violet flex items-center justify-center text-white font-mono shadow-md group-hover:scale-105 transition-transform">&lt;/&gt;</span>
+        <span>Dev<span class="text-brand-600 dark:text-brand-500">Portfolio</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <a href="#projetos" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Projetos</a>
+        <a href="#habilidades" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Habilidades</a>
+        <a href="#servicos" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Serviços Freelance</a>
+        <a href="#processo" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Como Trabalho</a>
+        <a href="#contato" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Contato</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-3">
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" aria-label="Alternar tema claro/escuro" class="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="moon" id="theme-icon" class="w-5 h-5"></i>
+        </button>
+
+        <!-- WhatsApp Quick CTA -->
+        <a href="#contato" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-brand-600 hover:bg-brand-700 rounded-lg shadow-sm hover:shadow transition-all">
+          <span>Solicitar Orçamento</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95">
+      <a href="#projetos" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-brand-600">Projetos</a>
+      <a href="#habilidades" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-brand-600">Habilidades</a>
+      <a href="#servicos" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-brand-600">Serviços Freelance</a>
+      <a href="#processo" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-brand-600">Como Trabalho</a>
+      <a href="#contato" class="block py-2 text-sm font-medium text-brand-600 font-semibold">Solicitar Orçamento</a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden hero-glow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto">
+        <!-- Availability badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 mb-6">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 badge-pulse"></span>
+          <span>Disponível para novos projetos (Workana / 99freelas)</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+          Transformando ideias em <span class="bg-gradient-to-r from-brand-600 via-accent-violet to-brand-500 bg-clip-text text-transparent">sistemas modernos</span> e automações eficientes
+        </h1>
+
+        <p class="mt-6 text-lg sm:text-xl text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+          Desenvolvedor Full-Stack e Especialista em Automação. Ajudo empreendedores e empresas a economizar tempo e aumentar faturamento com Landing Pages de alta conversão, Dashboards gerenciais e scripts em Python.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <a href="#projetos" class="px-6 py-3.5 rounded-xl font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-lg shadow-brand-600/20 hover:scale-105 transition-all flex items-center gap-2">
+            <i data-lucide="eye" class="w-5 h-5"></i>
+            <span>Explorar Projetos Práticos</span>
+          </a>
+          <a href="#contato" class="px-6 py-3.5 rounded-xl font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 hover:scale-105 transition-all flex items-center gap-2">
+            <i data-lucide="message-square" class="w-5 h-5 text-emerald-500"></i>
+            <span>Conversar no WhatsApp</span>
+          </a>
+        </div>
+
+        <!-- Trust Badges (Workana / 99freelas / GitHub) -->
+        <div class="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800/80 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+          <div class="p-3">
+            <p class="text-2xl sm:text-3xl font-extrabold text-brand-600 dark:text-brand-400">100%</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold mt-1">Entrega no Prazo</p>
+          </div>
+          <div class="p-3">
+            <p class="text-2xl sm:text-3xl font-extrabold text-emerald-500">Clean Code</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold mt-1">Padrões Modernos</p>
+          </div>
+          <div class="p-3">
+            <p class="text-2xl sm:text-3xl font-extrabold text-accent-violet">Mobile-First</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold mt-1">100% Responsivo</p>
+          </div>
+          <div class="p-3">
+            <p class="text-2xl sm:text-3xl font-extrabold text-accent-amber">Suporte</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold mt-1">Pós-entrega Garantido</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETOS SECTION (VITRINE) -->
+  <section id="projetos" class="py-20 bg-slate-100/60 dark:bg-slate-900/40 border-y border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">Casos Práticos & Portfólio</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-1">Projetos Desenvolvidos</h2>
+          <p class="text-slate-600 dark:text-slate-400 mt-2 max-w-xl">
+            Cada projeto abaixo foi criado para solucionar demandas reais e comuns de clientes no Workana e 99freelas.
+          </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap gap-2 p-1 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 self-start md:self-auto">
+          <button class="filter-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-brand-600 text-white transition-all" data-category="all">Todos (3)</button>
+          <button class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white transition-all" data-category="frontend">Landing Page</button>
+          <button class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white transition-all" data-category="fullstack">Dashboard & SaaS</button>
+          <button class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white transition-all" data-category="automation">Python / Automação</button>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-container">
+
+        <!-- CARD 1: LANDING PAGE NEXUS -->
+        <div class="project-card glass-card rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group border border-slate-200/80 dark:border-slate-800" data-category="frontend">
+          <div class="relative bg-gradient-to-br from-indigo-900 via-slate-900 to-purple-950 p-6 h-52 flex flex-col justify-between overflow-hidden">
+            <!-- Mock visual preview -->
+            <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#818cf8_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            <div class="relative z-10 flex justify-between items-start">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                <i data-lucide="layout" class="w-3.5 h-3.5"></i>
+                Frontend / Vendas
+              </span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Lighthouse 98+</span>
+            </div>
+            
+            <div class="relative z-10">
+              <h3 class="text-xl font-bold text-white group-hover:text-indigo-300 transition-colors">NexusFlow SaaS</h3>
+              <p class="text-xs text-slate-300 mt-1 line-clamp-2">Landing Page de alta conversão para software de gestão com calculadora de preços e formulário interativo.</p>
+            </div>
+          </div>
+
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2">Impacto no Negócio:</div>
+              <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5">
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-500"></i> Otimizada para campanhas de Google Ads / Meta Ads</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-500"></i> Integração direta com WhatsApp de vendas</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-500"></i> Carregamento ultrarrápido (< 1.2s)</li>
+              </ul>
+            </div>
+
+            <!-- Tech Badges -->
+            <div class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800/80">
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">HTML5/CSS3</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Tailwind CSS</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">JavaScript ES6+</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Mobile-First</span>
+            </div>
+
+            <!-- Card Actions -->
+            <div class="pt-2 flex items-center justify-between gap-3">
+              <a href="../projects/01-landing-page-nexus/index.html" target="_blank" class="flex-1 text-center py-2 px-3 rounded-lg text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 transition-colors flex items-center justify-center gap-1.5 shadow-sm">
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                <span>Ver Demonstração</span>
+              </a>
+              <a href="https://github.com/gattz2020" target="_blank" class="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-colors" title="Ver Código no GitHub">
+                <i data-lucide="github" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: DASHBOARD GESTÃO & CRM -->
+        <div class="project-card glass-card rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group border border-slate-200/80 dark:border-slate-800" data-category="fullstack">
+          <div class="relative bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 p-6 h-52 flex flex-col justify-between overflow-hidden">
+            <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            <div class="relative z-10 flex justify-between items-start">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-300 border border-blue-500/30">
+                <i data-lucide="bar-chart-3" class="w-3.5 h-3.5"></i>
+                SaaS / Full-Stack
+              </span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-blue-500/20 text-blue-300 border border-blue-500/30">Live Charts</span>
+            </div>
+            
+            <div class="relative z-10">
+              <h3 class="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">Vanguard CRM & Gestão</h3>
+              <p class="text-xs text-slate-300 mt-1 line-clamp-2">Painel de controle comercial e financeiro completo com métricas em tempo real, gestão de clientes e relatórios.</p>
+            </div>
+          </div>
+
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2">Impacto no Negócio:</div>
+              <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5">
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-500"></i> Visão clara de faturamento, novos leads e ticket médio</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-500"></i> Filtro dinâmico por status e busca de clientes</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-500"></i> Exportação em CSV para conciliação contábil</li>
+              </ul>
+            </div>
+
+            <!-- Tech Badges -->
+            <div class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800/80">
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">JavaScript ES6+</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Chart.js</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Tailwind CSS</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">LocalStorage API</span>
+            </div>
+
+            <!-- Card Actions -->
+            <div class="pt-2 flex items-center justify-between gap-3">
+              <a href="../projects/02-dashboard-gestao/index.html" target="_blank" class="flex-1 text-center py-2 px-3 rounded-lg text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 transition-colors flex items-center justify-center gap-1.5 shadow-sm">
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                <span>Ver Demonstração</span>
+              </a>
+              <a href="https://github.com/gattz2020" target="_blank" class="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-colors" title="Ver Código no GitHub">
+                <i data-lucide="github" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3: AUTOMAÇÃO PYTHON & LEADS SCRAPER -->
+        <div class="project-card glass-card rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group border border-slate-200/80 dark:border-slate-800" data-category="automation">
+          <div class="relative bg-gradient-to-br from-emerald-950 via-slate-900 to-teal-950 p-6 h-52 flex flex-col justify-between overflow-hidden">
+            <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#34d399_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            <div class="relative z-10 flex justify-between items-start">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                <i data-lucide="bot" class="w-3.5 h-3.5"></i>
+                Python & Automação
+              </span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">CLI + Pipeline</span>
+            </div>
+            
+            <div class="relative z-10">
+              <h3 class="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors">LeadHunter & Data Scraper</h3>
+              <p class="text-xs text-slate-300 mt-1 line-clamp-2">Robô em Python para prospecção B2B automática, validação de e-mails/telefones e exportação para Excel e CRM.</p>
+            </div>
+          </div>
+
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2">Impacto no Negócio:</div>
+              <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5">
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-500"></i> Reduz até 30h de trabalho manual de pesquisa por semana</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-500"></i> Geração de planilhas formatadas em Excel (.xlsx) e CSV</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-500"></i> Notificação automática de novos leads via Webhook</li>
+              </ul>
+            </div>
+
+            <!-- Tech Badges -->
+            <div class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800/80">
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Python 3.12</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">BeautifulSoup4</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Pandas / OpenPyXL</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Webhooks</span>
+            </div>
+
+            <!-- Card Actions -->
+            <div class="pt-2 flex items-center justify-between gap-3">
+              <button onclick="openPythonModal()" class="flex-1 text-center py-2 px-3 rounded-lg text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-colors flex items-center justify-center gap-1.5 shadow-sm">
+                <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
+                <span>Ver Demonstração / CLI</span>
+              </button>
+              <a href="https://github.com/gattz2020" target="_blank" class="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-colors" title="Ver Código no GitHub">
+                <i data-lucide="github" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HABILIDADES TÉCNICAS -->
+  <section id="habilidades" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">Stack & Ferramentas</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-1">Habilidades Especializadas</h2>
+        <p class="text-slate-600 dark:text-slate-400 mt-2">Tecnologias modernas com foco em estabilidade, velocidade de entrega e fácil manutenção.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Frontend -->
+        <div class="glass-card p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div class="w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-5">
+            <i data-lucide="code-2" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Frontend & Interface</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Criação de interfaces responsivas, rápidas e com foco em usabilidade e taxa de conversão.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">React / Next.js</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">JavaScript / TypeScript</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Tailwind CSS</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">HTML5 Semântico</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">SEO & Core Web Vitals</span>
+          </div>
+        </div>
+
+        <!-- Backend & APIs -->
+        <div class="glass-card p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-950/70 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-5">
+            <i data-lucide="database" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Backend & Integrações</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Desenvolvimento de APIs RESTful, bancos de dados e integração de gateways de pagamento.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Node.js / Express</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Python / FastAPI</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">PostgreSQL / SQLite</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Mercado Pago / Pix / Stripe</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Autenticação JWT</span>
+          </div>
+        </div>
+
+        <!-- Automação & Bots -->
+        <div class="glass-card p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950/70 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-5">
+            <i data-lucide="cpu" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Automação & Scraping</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Eliminação de tarefas repetitivas, extração de dados e automação de rotinas comerciais.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Python Scripting</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Web Scraping (BS4 / Playwright)</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Bots de WhatsApp / Telegram</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Google Sheets API</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Tratamento de Dados (Pandas)</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVIÇOS OFERECIDOS -->
+  <section id="servicos" class="py-20 bg-slate-100/60 dark:bg-slate-900/40 border-y border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">Soluções para Clientes</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-1">Como Posso Ajudar Seu Negócio</h2>
+        <p class="text-slate-600 dark:text-slate-400 mt-2">Formatos de contratação ágeis com entrega garantida para plataformas freelance.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Serviço 1 -->
+        <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-8 border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition-shadow relative">
+          <div class="w-10 h-10 rounded-lg bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm mb-6">01</div>
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Landing Pages de Alta Conversão</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+            Páginas modernas para lançamentos de produtos, negócios locais, escritórios ou infoprodutos com integração de WhatsApp e formulários.
+          </p>
+          <div class="space-y-2 text-xs text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-slate-700 pt-4">
+            <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Prazo médio: 3 a 7 dias úteis</div>
+            <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Hospedagem e domínio configurados</div>
+            <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Otimização para celulares e Google</div>
+          </div>
+        </div>
+
+        <!-- Serviço 2 -->
+        <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-8 border-2 border-brand-500/50 dark:border-brand-500 shadow-md relative">
+          <div class="absolute -top-3.5 right-6 bg-brand-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Mais Procurado</div>
+          <div class="w-10 h-10 rounded-lg bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold text-sm mb-6">02</div>
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Dashboards & Sistemas Internos</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+            Desenvolvimento de painéis administrativos, CRMs, controle de estoque ou sistemas para gerenciar vendas e atendimento ao cliente.
+          </p>
+          <div class="space-y-2 text-xs text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-slate-700 pt-4">
+            <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Prazo médio: 1 a 3 semanas</div>
+            <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Níveis de acesso e permissões</div>
+            <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Relatórios com exportação em Excel</div>
+          </div>
+        </div>
+
+        <!-- Serviço 3 -->
+        <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-8 border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition-shadow relative">
+          <div class="w-10 h-10 rounded-lg bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm mb-6">03</div>
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Automações & Web Scraping</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+            Robôs para extração de contatos (leads), monitoramento de preços de concorrentes e automação de alertas via WhatsApp/E-mail.
+          </p>
+          <div class="space-y-2 text-xs text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-slate-700 pt-4">
+            <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Prazo médio: 2 a 5 dias úteis</div>
+            <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Entrega em planilhas ou banco de dados</div>
+            <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Execução agendada na nuvem</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSO DE TRABALHO -->
+  <section id="processo" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">Transparência Total</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-1">Como Funciona a Parceria</h2>
+        <p class="text-slate-600 dark:text-slate-400 mt-2">Um método ágil para que você receba o projeto no prazo e sem surpresas.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="glass-card p-6 rounded-2xl relative">
+          <div class="text-3xl font-extrabold text-brand-600 dark:text-brand-400 mb-2">01</div>
+          <h4 class="font-bold text-slate-900 dark:text-white mb-2">Briefing & Alinhamento</h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Entendimento detalhado das metas do projeto, referências visuais e escopo bem definido.</p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl relative">
+          <div class="text-3xl font-extrabold text-brand-600 dark:text-brand-400 mb-2">02</div>
+          <h4 class="font-bold text-slate-900 dark:text-white mb-2">Desenvolvimento & Demos</h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Construção ágil com links de pré-visualização para você acompanhar o progresso em tempo real.</p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl relative">
+          <div class="text-3xl font-extrabold text-brand-600 dark:text-brand-400 mb-2">03</div>
+          <h4 class="font-bold text-slate-900 dark:text-white mb-2">Testes & Ajustes</h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Validação em múltiplos dispositivos (celular, tablet e desktop), correção de detalhes e revisão final.</p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl relative">
+          <div class="text-3xl font-extrabold text-brand-600 dark:text-brand-400 mb-2">04</div>
+          <h4 class="font-bold text-slate-900 dark:text-white mb-2">Entrega & Suporte</h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Publicação no seu servidor ou nuvem, entrega do código-fonte e período de garantia pós-entrega.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO / PROPOSTA -->
+  <section id="contato" class="py-20 bg-slate-100/60 dark:bg-slate-900/40 border-t border-slate-200 dark:border-slate-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-200 dark:border-slate-800 shadow-lg text-center">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-100 text-brand-800 dark:bg-brand-950/70 dark:text-brand-300 mb-4">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          Vamos tirar sua ideia do papel?
+        </span>
+
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Solicite um Orçamento Sem Compromisso</h2>
+        <p class="text-slate-600 dark:text-slate-300 mt-3 text-sm sm:text-base max-w-xl mx-auto">
+          Respondo rapidamente no WhatsApp ou pelo chat da sua plataforma de preferência (Workana / 99freelas).
+        </p>
+
+        <!-- Direct Actions -->
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <!-- WhatsApp Button -->
+          <a href="https://wa.me/5500000000000?text=Olá!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20um%20orçamento%20para%20um%20projeto." target="_blank" class="px-6 py-3.5 rounded-xl font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-md hover:scale-105 transition-all flex items-center gap-2">
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            <span>Chamar no WhatsApp Direto</span>
+          </a>
+
+          <!-- Workana Profile Link Button -->
+          <a href="#" class="px-6 py-3.5 rounded-xl font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 hover:scale-105 transition-all flex items-center gap-2">
+            <i data-lucide="briefcase" class="w-5 h-5 text-brand-600"></i>
+            <span>Perfil no Workana</span>
+          </a>
+
+          <!-- 99freelas Link Button -->
+          <a href="#" class="px-6 py-3.5 rounded-xl font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 hover:scale-105 transition-all flex items-center gap-2">
+            <i data-lucide="user-check" class="w-5 h-5 text-accent-violet"></i>
+            <span>Perfil no 99freelas</span>
+          </a>
+        </div>
+
+        <!-- Quick Form -->
+        <form id="contact-form" class="mt-10 text-left max-w-xl mx-auto space-y-4 pt-8 border-t border-slate-200 dark:border-slate-800">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Seu Nome / Empresa</label>
+              <input type="text" id="contact-name" required placeholder="Ex: Lucas Silva" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 dark:text-white" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">WhatsApp ou E-mail</label>
+              <input type="text" id="contact-detail" required placeholder="(11) 99999-9999" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 dark:text-white" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Tipo de Projeto</label>
+            <select id="contact-service" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 dark:text-white">
+              <option value="Landing Page">Landing Page / Site Institucional</option>
+              <option value="Dashboard / Sistema">Dashboard ou Sistema Web (SaaS)</option>
+              <option value="Automação / Web Scraping">Automação em Python / Robô / Web Scraping</option>
+              <option value="Outro">Outro serviço sob medida</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Detalhes Rápidos do Projeto</label>
+            <textarea id="contact-msg" rows="3" placeholder="Conte brevemente o que você precisa..." class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 dark:text-white"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-3 rounded-xl font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-md transition-colors flex items-center justify-center gap-2">
+            <i data-lucide="send" class="w-4 h-4"></i>
+            <span>Enviar Mensagem Direta via WhatsApp</span>
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-8 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500 dark:text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>© 2026 Portfólio Profissional. Todos os direitos reservados.</p>
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/gattz2020" target="_blank" class="hover:text-brand-600 dark:hover:text-white transition-colors flex items-center gap-1">
+          <i data-lucide="github" class="w-4 h-4"></i> GitHub
+        </a>
+        <a href="#" class="hover:text-brand-600 dark:hover:text-white transition-colors">Workana</a>
+        <a href="#" class="hover:text-brand-600 dark:hover:text-white transition-colors">99freelas</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL PARA DEMO DE PYTHON / CLI -->
+  <div id="python-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-2xl w-full p-6 shadow-2xl text-slate-100 relative">
+      <button onclick="closePythonModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-4">
+        <div class="p-2 rounded-lg bg-emerald-500/20 text-emerald-400">
+          <i data-lucide="terminal" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-white">LeadHunter & Data Scraper (Python 3.12)</h3>
+          <p class="text-xs text-slate-400">Exemplo de execução da automação em linha de comando</p>
+        </div>
+      </div>
+
+      <!-- Simulated Terminal -->
+      <div class="bg-black/80 rounded-xl p-4 font-mono text-xs border border-slate-800 text-emerald-400 leading-relaxed overflow-x-auto space-y-2">
+        <p class="text-slate-500">$ python main.py --segmento "Clinicas Odontologicas" --cidade "Sao Paulo" --limite 50 --exportar excel</p>
+        <p class="text-blue-400">[INFO] Iniciando LeadHunter v1.0.0...</p>
+        <p class="text-slate-300">[1/3] Conectando aos diretórios públicos e motores de busca...</p>
+        <p class="text-slate-300">[2/3] Extraindo CNPJ, Razão Social, E-mail, Telefone e Redes Sociais...</p>
+        <p class="text-emerald-400">[SUCCESS] 50 leads válidos capturados e higienizados.</p>
+        <p class="text-slate-300">[3/3] Gerando planilha Excel formatada: <span class="underline text-yellow-300">relatorio_clinicas_odontologicas_sp.xlsx</span></p>
+        <p class="text-purple-400">[WEBHOOK] Notificação de conclusão enviada para o canal comercial no Telegram!</p>
+        <p class="text-emerald-300 font-bold">✓ Execução finalizada em 4.2 segundos. Arquivo pronto para o time comercial.</p>
+      </div>
+
+      <div class="mt-6 flex justify-end gap-3">
+        <button onclick="closePythonModal()" class="px-4 py-2 rounded-lg text-xs font-semibold text-slate-300 bg-slate-800 hover:bg-slate-700">Fechar</button>
+        <a href="https://github.com/gattz2020" target="_blank" class="px-4 py-2 rounded-lg text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 flex items-center gap-1.5">
+          <i data-lucide="github" class="w-4 h-4"></i>
+          <span>Ver Código Fonte no GitHub</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
