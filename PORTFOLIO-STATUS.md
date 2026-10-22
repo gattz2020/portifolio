@@ -34,9 +34,19 @@ Todos os arquivos estão criados, testados e funcionais dentro da sua pasta:
 - **Foco:** Automação de tarefas repetitivas, extração de contatos e alertas corporativos.
 - **Destaques:** CLI com parâmetros flexíveis, sanitização de dados, exportação para CSV/JSON, simulador de alertas via Webhook e **testes unitários 100% aprovados**.
 
-### 5. 📝 Documentação & Propostas Comerciais (`docs/`)
+### 5. ⚡ Projeto 04: CloudPay Nexus Engine (`projects/04-cloud-payment-gateway/`)
+- **Arquivos:** [`app/main.py`](./projects/04-cloud-payment-gateway/app/main.py), [`app/models.py`](./projects/04-cloud-payment-gateway/app/models.py), [`app/services/pix_service.py`](./projects/04-cloud-payment-gateway/app/services/pix_service.py), [`frontend/index.html`](./projects/04-cloud-payment-gateway/frontend/index.html), [`tests/test_gateway.py`](./projects/04-cloud-payment-gateway/tests/test_gateway.py), [`Dockerfile`](./projects/04-cloud-payment-gateway/Dockerfile), [`docker-compose.yml`](./projects/04-cloud-payment-gateway/docker-compose.yml)
+- **Foco:** Sistemas de Alta Confiabilidade, Computação em Nuvem, Microsserviços e Segurança Financeira.
+- **Destaques:** 
+  - Cálculo oficial de BR Code Pix EMV com CRC16 polinomial.
+  - Validação criptográfica de Webhooks com `HMAC-SHA256` contra adulteração e Timing Attacks.
+  - Controle de concorrência com chave de **Idempotência** (`X-Idempotency-Key`).
+  - Containerização completa com Docker multi-stage e PostgreSQL na nuvem (Supabase / RDS).
+  - Testes automatizados com Pytest cobrindo regras de negócio e segurança.
+
+### 6. 📝 Documentação & Propostas Comerciais (`docs/`)
 - **Arquivo:** [`docs/propostas-freelance.md`](./docs/propostas-freelance.md)
-- **Conteúdo:** 3 modelos de propostas prontas para copiar e colar no **Workana** e **99freelas**, com argumentos de venda e gatilhos de fechamento.
+- **Conteúdo:** 4 modelos de propostas prontas para copiar e colar no **Workana** e **99freelas**, incluindo proposta de alto valor para integrações financeiras em nuvem.
 
 ---
 

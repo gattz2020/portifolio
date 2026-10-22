@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CloudPay Checkout | Demonstração de Gateway Pix & Webhooks</title>
+  <meta name="description" content="Checkout demonstrativo conectado à API em nuvem com geração de Pix dinâmico, QR Code e confirmação em tempo real." />
+
+  <!-- Fonts & Tailwind -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .pulse-pix {
+      animation: pulse-border 2s infinite ease-in-out;
+    }
+    @keyframes pulse-border {
+      0%, 100% { border-color: rgba(16, 185, 129, 0.3); }
+      50% { border-color: rgba(16, 185, 129, 1); }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-full flex flex-col font-sans antialiased selection:bg-brand-600 selection:text-white">
+
+  <!-- TOP BAR -->
+  <header class="border-b border-slate-800 bg-slate-900/60 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-brand-600 to-teal-400 flex items-center justify-center text-white shadow-lg shadow-brand-600/30">
+          <i data-lucide="shield-check" class="w-5 h-5"></i>
+        </div>
+        <span class="font-extrabold text-base tracking-tight text-white">CloudPay <span class="text-brand-500 font-mono text-xs uppercase px-2 py-0.5 rounded bg-brand-500/10 border border-brand-500/20">Nexus Engine</span></span>
+      </div>
+
+      <div class="flex items-center gap-4 text-xs">
+        <a href="../../../hub/index.html" class="flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors">
+          <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> Voltar ao Portfólio
+        </a>
+        <a href="https://github.com/gattz2020/portifolio" target="_blank" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors">
+          <i data-lucide="github" class="w-3.5 h-3.5"></i> Código no GitHub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CHECKOUT -->
+  <main class="flex-1 max-w-4xl w-full mx-auto p-4 sm:p-8 flex flex-col justify-center">
+    
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+      
+      <!-- LADO ESQUERDO: RESUMO DO PEDIDO -->
+      <div class="md:col-span-2 space-y-6">
+        <div class="bg-slate-900/80 rounded-2xl p-6 border border-slate-800 shadow-xl space-y-4">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-brand-400">Ambiente de Demonstração</span>
+          <h2 class="text-xl font-extrabold text-white">Resumo do Pedido</h2>
+          
+          <div class="py-4 border-y border-slate-800 space-y-3 text-xs">
+            <div class="flex justify-between">
+              <span class="text-slate-400">Serviço:</span>
+              <span class="text-white font-semibold">Consultoria Cloud & DevOps</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-400">Plano:</span>
+              <span class="text-white font-semibold">Mensal / Recorrente</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-400">Protocolo Gateway:</span>
+              <span class="text-slate-400 font-mono" id="label-ref">GERANDO...</span>
+            </div>
+          </div>
+
+          <div class="flex justify-between items-baseline pt-2">
+            <span class="text-xs text-slate-400">Total a pagar:</span>
+            <span class="text-2xl font-extrabold text-brand-400 font-mono">R$ 149,90</span>
+          </div>
+
+          <div class="bg-slate-950/80 p-3.5 rounded-xl border border-slate-800/80 text-[11px] text-slate-400 space-y-1.5">
+            <div class="flex items-center gap-1.5 text-emerald-400 font-semibold">
+              <i data-lucide="lock" class="w-3.5 h-3.5"></i> Pagamento Seguro 256-bit
+            </div>
+            <p>Emissão instantânea de QR Code com conciliação automática via Webhook.</p>
+          </div>
+        </div>
+
+        <!-- Card de Arquitetura -->
+        <div class="bg-slate-900/40 rounded-2xl p-5 border border-slate-800/60 text-xs text-slate-400 space-y-2">
+          <p class="font-bold text-slate-300">Stack de Engenharia Cloud:</p>
+          <ul class="space-y-1 text-[11px] list-disc list-inside text-slate-400">
+            <li>FastAPI + Pydantic V2</li>
+            <li>PostgreSQL / Supabase ORM</li>
+            <li>Validação Criptográfica HMAC-SHA256</li>
+            <li>Controle de Idempotência Atômico</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- LADO DIREITO: ÁREA DO PIX OU FORMULÁRIO -->
+      <div class="md:col-span-3">
+        
+        <!-- ESTADO 1: FORMULÁRIO DO CLIENTE -->
+        <div id="step-form" class="bg-slate-900/90 rounded-2xl p-6 sm:p-8 border border-slate-800 shadow-xl space-y-6">
+          <div>
+            <h3 class="text-lg font-bold text-white">Dados para Cobrança</h3>
+            <p class="text-xs text-slate-400 mt-1">Preencha os dados do pagador para gerar o Pix instantâneo.</p>
+          </div>
+
+          <form id="checkout-form" class="space-y-4 text-xs">
+            <div>
+              <label class="block font-semibold text-slate-300 mb-1">Nome Completo</label>
+              <input type="text" id="cust-name" required value="Lucas Alcantara Silva" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-700 bg-slate-950 text-white focus:outline-none focus:ring-2 focus:ring-brand-500" />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block font-semibold text-slate-300 mb-1">E-mail</label>
+                <input type="email" id="cust-email" required value="lucas.silva@exemplo.com" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-700 bg-slate-950 text-white focus:outline-none focus:ring-2 focus:ring-brand-500" />
+              </div>
+              <div>
+                <label class="block font-semibold text-slate-300 mb-1">CPF</label>
+                <input type="text" id="cust-cpf" required value="123.456.789-00" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-700 bg-slate-950 text-white focus:outline-none focus:ring-2 focus:ring-brand-500" />
+              </div>
+            </div>
+
+            <div class="pt-4">
+              <button type="submit" class="w-full py-3.5 rounded-xl font-bold text-white bg-brand-600 hover:bg-brand-500 shadow-lg shadow-brand-600/25 hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                <i data-lucide="qr-code" class="w-4 h-4"></i>
+                <span>Gerar Cobrança Pix com QR Code</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- ESTADO 2: QR CODE E PAGAMENTO PENDENTE -->
+        <div id="step-pix" class="hidden bg-slate-900/90 rounded-2xl p-6 sm:p-8 border-2 border-emerald-500/40 pulse-pix shadow-2xl space-y-6 text-center">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950 text-emerald-300 border border-emerald-800">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+            <span>Aguardando Pagamento em Tempo Real</span>
+          </div>
+
+          <h3 class="text-xl font-extrabold text-white">Escaneie o QR Code Pix</h3>
+          <p class="text-xs text-slate-400 max-w-sm mx-auto">Abra o app do seu banco, escolha a opção <strong>Pagar com Pix</strong> e aponte a câmera.</p>
+
+          <!-- QR Code Container -->
+          <div class="p-4 bg-white rounded-2xl inline-block shadow-inner mx-auto">
+            <img id="pix-qr-img" src="" alt="QR Code Pix" class="w-48 h-48 sm:w-56 sm:h-56 mx-auto object-contain" />
+          </div>
+
+          <!-- Pix Copia e Cola -->
+          <div class="space-y-2 text-left">
+            <label class="block text-[11px] font-semibold text-slate-400">Ou copie o código Pix abaixo:</label>
+            <div class="flex gap-2">
+              <input type="text" id="pix-copy-input" readonly class="flex-1 px-3 py-2 text-xs font-mono rounded-xl bg-slate-950 border border-slate-700 text-slate-300 focus:outline-none" />
+              <button onclick="copiarPix()" class="px-4 py-2 rounded-xl text-xs font-bold text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center gap-1.5 transition-colors">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span id="copy-btn-text">Copiar</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Botão de Simulação de Webhook (Para Testes) -->
+          <div class="pt-4 border-t border-slate-800">
+            <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800 space-y-2">
+              <p class="text-[11px] text-amber-400 font-semibold flex items-center justify-center gap-1">
+                <i data-lucide="terminal" class="w-3.5 h-3.5"></i> Demonstração Técnica (Simulação de Webhook):
+              </p>
+              <p class="text-[11px] text-slate-400">Clique abaixo para disparar o webhook simulado do banco confirmando o pagamento:</p>
+              <button onclick="simularAprovacao()" id="btn-simular" class="w-full py-2.5 rounded-lg text-xs font-bold text-emerald-950 bg-emerald-400 hover:bg-emerald-300 transition-all flex items-center justify-center gap-1.5 shadow-sm">
+                <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                <span>Simular Aprovação Imediata pelo Banco</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ESTADO 3: SUCESSO / PAGO -->
+        <div id="step-success" class="hidden bg-slate-900/90 rounded-2xl p-8 sm:p-12 border-2 border-emerald-500 shadow-2xl text-center space-y-6">
+          <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto">
+            <i data-lucide="check-check" class="w-8 h-8"></i>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-extrabold text-white">Pagamento Confirmado com Sucesso!</h3>
+            <p class="text-xs text-slate-400 mt-2">O Webhook foi recebido na nuvem, a assinatura HMAC foi validada e o pedido foi liberado atomicamente.</p>
+          </div>
+
+          <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-xs font-mono text-left space-y-2 text-slate-300">
+            <p class="text-emerald-400 font-bold">✓ STATUS: PAGO (ACID Transaction Complete)</p>
+            <p>ID do Pedido: <span id="success-order-id" class="text-white">ORD-123</span></p>
+            <p>Timestamp: <span id="success-time" class="text-slate-400">2026-10-21 22:35</span></p>
+          </div>
+
+          <button onclick="reiniciarCheckout()" class="px-6 py-2.5 rounded-xl text-xs font-bold text-white bg-slate-800 hover:bg-slate-700 transition-colors">
+            Fazer Novo Teste
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-6 border-t border-slate-800 text-center text-xs text-slate-500">
+    <p>© 2026 CloudPay Nexus. Demonstração de Arquitetura de Nuvem, FastAPI & Webhooks Seguros.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

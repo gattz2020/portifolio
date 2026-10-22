@@ -78,3 +78,30 @@ Copie, adapte os campos entre colchetes `[ ... ]` e envie diretamente nas propos
 > Atenciosamente,  
 > **[Seu Nome]** — Especialista em Automação Python  
 > 📲 WhatsApp: (62) 98509-9185
+
+---
+
+## ⚡ Proposta 04: Gateways de Pagamento, Pix & Arquitetura na Nuvem (High Ticket)
+
+**Título da Proposta:** Integração Segura de Gateway Pix/Cartão com Webhooks HMAC, Docker e Nuvem
+
+> Olá! Tudo bem?
+>
+> Seu projeto chamou minha atenção porque sou Engenheiro de Computação e trabalho com integrações financeiras em nuvem onde **segurança e confiabilidade são inegociáveis**.
+>
+> Para sistemas de pagamento, os pontos mais críticos que garantem que você não perca dinheiro são:
+> 1. **Validação Criptográfica de Webhooks (HMAC-SHA256)**: Garante que notificações falsas nunca aprovem pedidos indevidamente;
+> 2. **Controle Estrito de Idempotência**: Impede que instabilidades de rede gerem cobranças duplicadas ou créditos repetidos ao cliente;
+> 3. **Cálculo Oficial Pix EMV + QR Code**: Padrão do Banco Central com confirmação automática instantânea;
+> 4. **Containerização Docker & Banco Relacional**: Arquitetura pronta para deploy seguro em nuvens como Supabase, AWS, Render ou servidores VPS.
+>
+> Desenvolvi o **CloudPay Nexus Engine** exatamente com esse nível de engenharia, incluindo testes automatizados de concorrência e interface de checkout.
+>
+> 🔗 **Veja a demonstração de checkout ao vivo:** `https://gattz2020.github.io/portifolio/projects/04-cloud-payment-gateway/frontend/`  
+> 🔗 **Repositório e Arquitetura no GitHub:** `https://github.com/gattz2020/portifolio/tree/main/projects/04-cloud-payment-gateway`
+>
+> Qual gateway você pretende utilizar (Mercado Pago, Asaas, Stripe ou outro)? Podemos alinhar os detalhes técnicos pelo chat ou WhatsApp!
+>
+> Um abraço,  
+> **[Seu Nome]** — Engenheiro de Computação & Dev Backend Cloud  
+> 📲 WhatsApp: (62) 98509-9185

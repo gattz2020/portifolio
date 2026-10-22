@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  # Microserviço API
+  api:
+    build: .
+    container_name: cloudpay_api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=development
+      - DEBUG=True
+      - DATABASE_URL=postgresql://cloudpay_user:cloudpay_pass@db:5432/cloudpay_db
+      - WEBHOOK_SECRET=cloudpay_super_secret_webhook_key_2026
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - .:/app
+
+  # Banco de Dados Relacional PostgreSQL (Nuvem / Local)
+  db:
+    image: postgres:16-alpine
+    container_name: cloudpay_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: cloudpay_user
+      POSTGRES_PASSWORD: cloudpay_pass
+      POSTGRES_DB: cloudpay_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cloudpay_user -d cloudpay_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:

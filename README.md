@@ -9,6 +9,7 @@ Bem-vindo ao repositório central de projetos desenvolvidos para demonstração 
 | Projeto | Categoria | Tecnologias | Demonstração |
 | :--- | :--- | :--- | :--- |
 | **[Portfólio Hub](./hub/)** | Vitrine Central / Pessoal | Tailwind CSS, Lucide, JS ES6+ | [Abrir Hub](./hub/index.html) |
+| **[04. CloudPay Engine](./projects/04-cloud-payment-gateway/)** | Gateway Cloud & Webhooks | FastAPI, PostgreSQL, Docker, HMAC-SHA256 | [Abrir Demo](./projects/04-cloud-payment-gateway/frontend/index.html) |
 | **[01. NexusFlow](./projects/01-landing-page-nexus/)** | Landing Page de Alta Conversão | Tailwind CSS, Lucide, Simulador ROI | [Abrir Demo](./projects/01-landing-page-nexus/index.html) |
 | **[02. Vanguard CRM](./projects/02-dashboard-gestao/)** | Dashboard Comercial & SaaS | Tailwind, Chart.js, LocalStorage, Export CSV | [Abrir Demo](./projects/02-dashboard-gestao/index.html) |
 | **[03. LeadHunter Bot](./projects/03-automacao-scraper-bot/)** | Automação & Web Scraping | Python 3.12, CSV/JSON, Webhooks | [Ver Código & Testes](./projects/03-automacao-scraper-bot/) |
@@ -32,13 +33,19 @@ portifolio/
 │   │   ├── index.html
 │   │   ├── dashboard.js
 │   │   └── README.md
-│   └── 03-automacao-scraper-bot/ # 🤖 Automação em Python para extração de leads, exportação e alertas
-│       ├── main.py
-│       ├── scraper.py
-│       ├── exporter.py
-│       ├── notifier.py
-│       ├── test_automation.py
-│       └── requirements.txt
+│   ├── 03-automacao-scraper-bot/ # 🤖 Automação em Python para extração de leads, exportação e alertas
+│   │   ├── main.py
+│   │   ├── scraper.py
+│   │   ├── exporter.py
+│   │   ├── notifier.py
+│   │   ├── test_automation.py
+│   │   └── requirements.txt
+│   └── 04-cloud-payment-gateway/ # ⚡ Gateway na Nuvem: Pix, Webhooks HMAC, Docker e Idempotência
+│       ├── app/ (main.py, models.py, schemas.py, pix_service.py)
+│       ├── frontend/ (index.html, script.js)
+│       ├── tests/ (test_gateway.py)
+│       ├── Dockerfile & docker-compose.yml
+│       └── README.md
 ├── docs/                         # 📝 Modelos de propostas comerciais para Workana e 99freelas
 │   └── propostas-freelance.md
 ├── PORTFOLIO-STATUS.md           # 📌 Resumo de status, próximos passos e checklist para amanhã
